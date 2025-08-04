@@ -1,74 +1,201 @@
-# ALX Project Nexus - ProDev Backend Engineering Program
+# Crafters Social Feed – MVP
 
-## Overview
+A minimalist **mobile social media app** designed specifically for **crafters and handmade product sellers**. It enables users to connect, engage, and market their work in real time through a dynamic and interactive feed.
 
-The ProDev Backend Engineering program is a comprehensive software development bootcamp designed to equip developers with cutting-edge skills in modern web and mobile application development. This intensive program focuses on full-stack development with emphasis on backend architecture, system design, and scalable application development.
+This MVP includes a complete **frontend in React Native** and a **backend in Django with GraphQL**, following real-world practices for scalable, modern application development.
 
-## Major Learnings
+## Features
 
-### Key Technologies Covered
+### Frontend (Mobile App)
+- Dynamic post loading using GraphQL
+- Like, comment, and share posts
+- Infinite scrolling with smooth transitions
+- Responsive and user-friendly UI (React Native + TypeScript)
 
-- **Mobile Development**: Native and cross-platform mobile application development
-- **Web Development**: Full-stack web application architecture and implementation
-- **Progressive Web Apps (PWA)**: Building app-like experiences for the web
-- **Cloud Technologies**: Deployment and scaling of applications
-- **Database Systems**: SQL and NoSQL database design and optimization
+### Backend (API)
+- GraphQL API with queries & mutations for posts and interactions
+- PostgreSQL for relational data storage
+- Models for posts, comments, likes, and shares
+- GraphQL Playground for API testing and debugging
 
-### Important Frontend Development Concepts
+## Project Goals
 
-- **Next.js**: React-based framework for production-ready applications
-- **TailwindCSS**: Utility-first CSS framework for rapid UI development
-- **System Design and Analysis**: Architecture patterns and scalable system design
-- **TypeScript**: Type-safe JavaScript development
-- **GraphQL**: Efficient API query language and runtime
-- **API Integration**: RESTful services and third-party API consumption
+### Frontend
+- Build a responsive mobile feed UI
+- Integrate Apollo Client for GraphQL API interaction
+- Enable post engagement features (like, comment, share)
+- Implement infinite scrolling and transitions
 
-## Challenges Faced and Solutions Implemented
+### Backend
+- Create scalable GraphQL APIs with Django + Graphene
+- Design an optimized schema for posts and user interactions
+- Support efficient querying and pagination
+- Provide a hosted GraphQL Playground for testing
 
-### Technical Challenges
-- **Scalability Issues**: Implemented microservices architecture and load balancing
-- **Database Optimization**: Applied indexing strategies and query optimization techniques
-- **API Performance**: Utilized caching mechanisms and GraphQL for efficient data fetching
-- **Cross-platform Compatibility**: Adopted responsive design principles and PWA standards
+## Tech Stack
 
-### Learning Curve Management
-- **Complex Framework Integration**: Broke down learning into manageable modules
-- **System Design Complexity**: Applied incremental design patterns and regular code reviews
-- **Time Management**: Implemented agile development practices and sprint planning
+| Layer       | Technology                          |
+|-------------|-------------------------------------|
+| Frontend    | React Native (Expo), TypeScript     |
+| State Mgmt  | Apollo Client (GraphQL)             |
+| Navigation  | React Navigation                    |
+| Backend     | Django, Graphene (GraphQL)          |
+| Database    | PostgreSQL                          |
+| API Testing | GraphQL Playground                  |
 
-## Best Practices and Personal Takeaways
+## Setup Instructions
 
-### Development Best Practices
-- **Code Quality**: Emphasis on clean code, proper documentation, and testing
-- **Version Control**: Git workflow management and collaborative development
-- **Security**: Implementation of authentication, authorization, and data protection
-- **Performance**: Optimization techniques for frontend and backend systems
+### Backend
 
-### Personal Takeaways
-- **Continuous Learning**: Technology evolves rapidly; staying updated is crucial
-- **Problem-Solving**: Breaking complex problems into smaller, manageable components
-- **Collaboration**: Effective teamwork and communication in development environments
-- **User-Centric Design**: Always consider end-user experience in technical decisions
+1. **Navigate to the backend folder:**
+    ```bash
+    cd backend
+    ```
 
-## Technologies Stack
+2. **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-```markdown
-Frontend: Next.js, TypeScript, TailwindCSS
-Backend: Node.js, Express, GraphQL
-Database: PostgreSQL, MongoDB
-Tools: Git, Docker, VS Code
-Cloud: AWS, Vercel
+3. **Set up PostgreSQL:**
+    Update `DATABASES` in `settings.py` with your credentials.
+
+4. **Run migrations:**
+    ```bash
+    python manage.py migrate
+    ```
+
+5. **Start the server:**
+    ```bash
+    python manage.py runserver
+    ```
+
+6. **Access GraphQL Playground:**
+    ```
+    http://localhost:8000/graphql/
+    ```
+
+### Frontend
+
+1. **Navigate to the frontend folder:**
+    ```bash
+    cd frontend
+    ```
+
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3. **Update GraphQL endpoint in Apollo Client setup.**
+
+4. **Start the app with Expo:**
+    ```bash
+    npx expo start
+    ```
+
+## Project Structure
+
+```
+crafters-social-feed/
+├── frontend/             # React Native App
+│   ├── components/
+│   ├── screens/
+│   ├── graphql/
+│   └── App.tsx
+└── backend/              # Django + GraphQL API
+     ├── social/
+     │   ├── models.py
+     │   ├── schema.py
+     └── manage.py
 ```
 
-## Getting Started
+## Sample GraphQL Queries
 
-To explore the projects and code examples from this program:
+### Fetch Posts
 
-1. Clone this repository
-2. Navigate to specific project directories
-3. Follow individual project README files for setup instructions
-4. Review code comments and documentation for learning insights
+```graphql
+query {
+  allPosts {
+     id
+     title
+     content
+     image
+     author {
+        username
+     }
+     likesCount
+     comments {
+        content
+        user {
+          username
+        }
+     }
+  }
+}
+```
 
----
+### Like a Post
 
-*This repository serves as a portfolio and learning documentation for the ALX ProDev Backend Engineering program.*
+```graphql
+mutation {
+  likePost(postId: 1) {
+     success
+     post {
+        id
+        likesCount
+     }
+  }
+}
+```
+
+## Git Commit Workflow
+
+| Type    | Example                                           |
+| ------- | ------------------------------------------------- |
+| Feature | `feat: implement like and comment mutations`      |
+| Style   | `style: add animations for post card`             |
+| Fix     | `fix: resolve pagination bug in feed`             |
+| Docs    | `docs: update README with setup steps`            |
+| Perf    | `perf: optimize DB queries with prefetch_related` |
+
+## MVP Progress
+
+### Frontend Tasks
+
+* [x] Initialize React Native project
+* [x] Add Apollo Client & configure GraphQL
+* [x] Design post card and feed components
+* [x] Implement like, comment, share
+* [x] Add infinite scroll
+* [x] Style with animations and loading indicators
+
+### Backend Tasks
+
+* [x] Set up Django project with PostgreSQL
+* [x] Define models (Post, Comment, Like, Share)
+* [x] Create GraphQL types, queries, and mutations
+* [x] Optimize DB access with pagination
+* [x] Publish GraphQL Playground
+
+## Future Enhancements
+
+* User authentication with JWT or Firebase
+* Profiles and dashboards
+* Craft category filters
+* Saved/bookmarked posts
+* Admin moderation panel
+* Real-time notifications
+
+## Inspiration
+
+This MVP follows the **ProDev Real-World Case Study** on building scalable social feeds using modern frameworks and GraphQL APIs. Tailored for niche communities like **makers, crafters, and artists** to share their creativity.
+
+## License
+
+MIT License – free to use, fork, and build upon.
+
+## Made For
+
+> **Crafters. Creators. Makers. Artists.**
+> By makers, for makers.

@@ -266,3 +266,5 @@ GraphQL API available at `/graphql` with schema including:
 **Built with love as part of the ALX ProDev Frontend & Backend Engineering Programs**
 
 *This project showcases the culmination of intensive learning in both frontend and backend development, demonstrating full-stack application building skills, collaborative development practices, and modern software engineering principles.*
+git add package.json tsconfig.json app.json .npmrc .prettierrc
+git commit -m "Initial Expo React Native project setup"

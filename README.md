@@ -261,10 +261,82 @@ GraphQL API available at `/graphql` with schema including:
 - **Monitoring & Logging**: Comprehensive error tracking and performance analytics
 - **Security**: SSL/TLS encryption, environment variable management, and security headers
 
+## Project Deliverables
+
+### ERD Database Design
+**Entity Relationship Diagram**: Complete visual representation of the Crafters Social Feed database schema
+
+**Link**: [ERD Diagram - Crafters Social Feed Database](https://docs.google.com/document/d/your-erd-link-here)
+
+![Crafters Social Feed ERD](./assets/ERD.png "Crafters Social Feed Database Schema")
+
+**Key Entities & Relationships**:
+- **User Model**: Crafter profiles with authentication and profile information
+- **Post Model**: Craft posts with media, descriptions, and metadata
+- **Interaction Model**: Likes, comments, follows, and social engagement
+- **Category Model**: Craft categories and specializations
+- **Media Model**: Image and video file management for portfolios
+
+**Database Design Features**:
+- Normalized relational design with proper foreign keys
+- Optimized indexing for search and performance
+- Many-to-many relationships for social features
+- Cascade deletion policies for data integrity
+
+### Project Presentation
+**Slide Deck**: Comprehensive presentation covering project architecture, implementation, and learnings
+
+**Link**: [Project Presentation - Crafters Social Feed](https://docs.google.com/presentation/d/your-slides-link-here)
+
+**Presentation Outline**:
+1. **Project Overview & Objectives**
+2. **Technology Stack & Architecture**
+3. **Database Design & ERD Explanation**
+4. **Frontend Implementation (React Native/Expo)**
+5. **Backend Implementation (Django/GraphQL)**
+6. **Integration & Collaboration Process**
+7. **Challenges & Solutions**
+8. **Industry Best Practices Applied**
+9. **Deployment & Production Setup**
+10. **Demo & Live Features**
+
+### Demo Video
+**Project Demonstration**: 5-minute video showcasing the Crafters Social Feed in action
+
+**Link**: [Demo Video - Crafters Social Feed App](https://your-video-link-here)
+
+**Demo Content**:
+- **User Registration & Authentication**: New crafter signup and login flow
+- **Profile Creation**: Setting up crafter profile with specializations
+- **Craft Portfolio**: Uploading and showcasing handmade products
+- **Social Feed**: Browsing fellow crafters' latest creations
+- **Interactive Features**: Liking, commenting, and following other crafters
+- **Real-time Updates**: Live notifications and feed updates
+- **Search & Discovery**: Finding crafters by craft type and location
+
+**Industry Best Practices Demonstrated**:
+- **Mobile-First Design**: Responsive UI optimized for mobile devices
+- **API Security**: JWT authentication and input validation
+- **Performance Optimization**: Image caching and lazy loading
+- **Error Handling**: Graceful error boundaries and user feedback
+- **Code Quality**: TypeScript integration and clean architecture
+
+### Hosted Project
+**Live Application**: Deployed Crafters Social Feed accessible via web and mobile
+
+**Frontend (Mobile App)**: [Expo Published App](https://expo.dev/@your-username/crafters-social-feed)
+**Backend API**: [Django GraphQL API](https://your-backend-domain.com/graphql)
+**Web Dashboard**: [Admin Interface](https://your-backend-domain.com/admin)
+
+**Hosting Infrastructure**:
+- **Frontend**: Expo Application Services (EAS) for mobile deployment
+- **Backend**: Docker containers on cloud platform (AWS/Heroku/DigitalOcean)
+- **Database**: PostgreSQL with automated backups
+- **Media Storage**: Cloud CDN for optimized image delivery
+- **Monitoring**: Error tracking and performance analytics
+
 ---
 
 **Built with love as part of the ALX ProDev Frontend & Backend Engineering Programs**
 
 *This project showcases the culmination of intensive learning in both frontend and backend development, demonstrating full-stack application building skills, collaborative development practices, and modern software engineering principles.*
-git add package.json tsconfig.json app.json .npmrc .prettierrc
-git commit -m "Initial Expo React Native project setup"

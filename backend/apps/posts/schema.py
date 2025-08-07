@@ -16,11 +16,13 @@ class PostType(DjangoObjectType):
     
     class Meta:
         model = Post
-        fields = ('id', 'content', 'image', 'author', 'created_at', 'updated_at')
+        fields = ('id', 'title', 'content', 'author', 'craft_category', 'materials_used', 'time_to_complete', 'price_range', 'is_for_sale', 'is_featured', 'created_at', 'updated_at')
         interfaces = (relay.Node,)
         filter_fields = {
             'content': ['icontains'],
+            'title': ['icontains'],
             'author': ['exact'],
+            'craft_category': ['exact'],
             'created_at': ['gte', 'lte'],
         }
     

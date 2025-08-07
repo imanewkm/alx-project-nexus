@@ -107,11 +107,15 @@ The ProDev Backend Engineering program is a comprehensive curriculum focused on 
 ## Project Structure
 
 ```
-crafters-social-feed/
+project/
+├── app.json             # Expo app configuration
+├── package.json         # Frontend dependencies and scripts
+├── tsconfig.json        # TypeScript configuration
 ├── app/                 # Expo Router pages (file-based routing)
 │   ├── _layout.tsx      # Root layout with navigation
 │   ├── +not-found.tsx   # 404 error handling
 │   └── (tabs)/          # Tab navigation for main features
+│       ├── _layout.tsx  # Tab layout configuration
 │       ├── index.tsx    # Crafters feed homepage
 │       ├── profile.tsx  # User profile & portfolio
 │       └── notifications.tsx # Real-time notifications
@@ -129,12 +133,38 @@ crafters-social-feed/
 ├── types/              # TypeScript definitions
 │   └── graphql.ts      # Auto-generated GraphQL types
 ├── assets/             # Static resources
+│   └── images/         # App icons and images
+│       ├── favicon.png
+│       └── icon.png
 └── backend/            # Django GraphQL API server
+    ├── manage.py       # Django management script
+    ├── requirements.txt # Python dependencies
     ├── apps/           # Domain-specific Django applications
+    │   ├── __init__.py
     │   ├── users/      # Crafter profiles and authentication
+    │   │   ├── __init__.py
+    │   │   ├── admin.py    # Admin interface configuration
+    │   │   ├── apps.py     # App configuration
+    │   │   ├── models.py   # User and Follow models
+    │   │   └── schema.py   # GraphQL schema for users
     │   ├── posts/      # Craft posts and media management
+    │   │   ├── __init__.py
+    │   │   ├── admin.py    # Admin interface configuration
+    │   │   ├── apps.py     # App configuration
+    │   │   ├── models.py   # Post and CraftCategory models
+    │   │   └── schema.py   # GraphQL schema for posts
     │   └── interactions/ # Likes, comments, follows
+    │       ├── __init__.py
+    │       ├── admin.py    # Admin interface configuration
+    │       ├── apps.py     # App configuration
+    │       ├── models.py   # Like, Comment, Share models
+    │       └── schema.py   # GraphQL schema for interactions
     └── social_backend/ # Main Django configuration
+        ├── __init__.py
+        ├── schema.py   # Main GraphQL schema
+        ├── settings.py # Django settings
+        ├── urls.py     # URL configuration
+        └── wsgi.py     # WSGI configuration
 ```
 
 ## Setup & Installation

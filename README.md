@@ -266,8 +266,6 @@ GraphQL API available at `/graphql` with schema including:
 ### ERD Database Design
 **Entity Relationship Diagram**: Complete visual representation of the Crafters Social Feed database schema
 
-**Link**: [ERD Diagram - Crafters Social Feed Database](https://docs.google.com/document/d/your-erd-link-here)
-
 ![Crafters Social Feed ERD](./assets/images/ERD.png "Crafters Social Feed Database Schema")
 
 **Key Entities & Relationships**:

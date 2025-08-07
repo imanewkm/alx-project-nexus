@@ -268,7 +268,7 @@ GraphQL API available at `/graphql` with schema including:
 
 **Link**: [ERD Diagram - Crafters Social Feed Database](https://docs.google.com/document/d/your-erd-link-here)
 
-![Crafters Social Feed ERD](./assets/ERD.png "Crafters Social Feed Database Schema")
+![Crafters Social Feed ERD](./assets/images/ERD.png "Crafters Social Feed Database Schema")
 
 **Key Entities & Relationships**:
 - **User Model**: Crafter profiles with authentication and profile information

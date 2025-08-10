@@ -11,7 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Search, Edit } from 'lucide-react-native';
 import { useRouter } from 'expo-router';
-import { Conversation } from '@/types/graphql';
+import { Conversation } from '../../types/graphql';
 
 // Mock conversations data
 const mockConversations: Conversation[] = [

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Heart, MessageCircle, Share, MoreVertical, Flag, Copy } from 'lucide-react-native';
 import { useRouter } from 'expo-router';
-import { Post } from '@/types/graphql';
+import { Post } from '../types/graphql';
 
 interface PostCardProps {
   post: Post;

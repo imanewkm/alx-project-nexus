@@ -1,0 +1,22 @@
+[build]
+  command = "npm install && npm run build:netlify"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+  EXPO_USE_WEBPACK = "true"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production]
+  command = "npm install && npm run build:netlify"
+
+[context.deploy-preview]
+  command = "npm install && npm run build:netlify"
+
+[context.branch-deploy]
+  command = "npm install && npm run build:netlify"

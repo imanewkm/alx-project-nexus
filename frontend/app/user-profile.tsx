@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Dimensions
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Calendar } from 'lucide-react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
-import { User } from '@/types/graphql';
+import { User } from '../types/graphql';
 
 const { width: screenWidth } = Dimensions.get('window');
 const isTablet = screenWidth >= 768;

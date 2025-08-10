@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Send } from 'lucide-react-native';
-import { Message, User } from '@/types/graphql';
+import { Message, User } from '../types/graphql';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
 // Current user data

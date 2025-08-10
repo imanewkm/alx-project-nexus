@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { ApolloProvider } from '@apollo/client';
-import { useFrameworkReady } from '@/hooks/useFrameworkReady';
-import { apolloClient } from '@/lib/apollo-client';
+import { useFrameworkReady } from '../hooks/useFrameworkReady';
+import { apolloClient } from '../lib/apollo-client';
 
 export default function RootLayout() {
   useFrameworkReady();

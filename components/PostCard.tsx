@@ -64,7 +64,9 @@ export default function PostCard({ post }: PostCardProps) {
                 : post.author.username
               }
             </Text>
-            <Text style={styles.location}>The Zoo</Text>
+            {post.location && (
+              <Text style={styles.location}>{post.location}</Text>
+            )}
           </View>
         </View>
         <TouchableOpacity style={styles.moreButton}>

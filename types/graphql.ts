@@ -11,6 +11,7 @@ export interface Post {
   id: string;
   content: string;
   image?: string;
+  location?: string;
   author: User;
   createdAt: string;
   likesCount: number;

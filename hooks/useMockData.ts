@@ -4,11 +4,12 @@ import { Post } from '@/types/graphql';
 const mockPosts: Post[] = [
   {
     id: '1',
-    content: 'Just finished building an amazing React Native app! The new architecture is incredible 🚀',
-    image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    content: 'Just finished this beautiful hand-woven handbag using natural willow branches! 🧺 Took me 3 days but so worth it ✨',
+    image: 'https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    location: 'Artisan Workshop',
     author: {
       id: '1',
-      username: 'sarah_dev',
+      username: 'sarah_weaver',
       email: 'sarah@example.com',
       firstName: 'Sarah',
       lastName: 'Johnson',
@@ -23,11 +24,12 @@ const mockPosts: Post[] = [
   },
   {
     id: '2',
-    content: 'Beautiful sunset from my morning run today. Nature never fails to inspire! 🌅',
-    image: 'https://images.pexels.com/photos/96622/pexels-photo-96622.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    content: 'It is time to create something beautiful! Painting workshop this weekend',
+    image: 'https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    location: 'Art Studio',
     author: {
       id: '2',
-      username: 'mike_runner',
+      username: 'mike_potter',
       email: 'mike@example.com',
       firstName: 'Mike',
       lastName: 'Chen',
@@ -42,10 +44,12 @@ const mockPosts: Post[] = [
   },
   {
     id: '3',
-    content: 'Working on some exciting new features for our app. Can\'t wait to share what we\'re building! 💻✨',
+    content: 'Welcome to my shop where we sell your favourate handmade clothing pieces ✨',
+    image: 'https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    location: 'Shop',
     author: {
       id: '3',
-      username: 'emma_designer',
+      username: 'emma_knits',
       email: 'emma@example.com',
       firstName: 'Emma',
       lastName: 'Wilson',
@@ -60,11 +64,12 @@ const mockPosts: Post[] = [
   },
   {
     id: '4',
-    content: 'Coffee and code - the perfect combination for a productive day! ☕️ What\'s your favorite coding fuel?',
-    image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    content: 'I really love stumbling upon these interesting architectures around town',
+    image: 'https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    location: 'Somewhere',
     author: {
       id: '4',
-      username: 'alex_coffee',
+      username: 'alex_carver',
       email: 'alex@example.com',
       firstName: 'Alex',
       lastName: 'Rodriguez',

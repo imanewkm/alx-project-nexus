@@ -1,0 +1,4 @@
+# Ignore Expo specific files to prevent auto-detection
+app.json
+expo-env.d.ts
+.expo/

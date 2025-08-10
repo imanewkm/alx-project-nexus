@@ -24,5 +24,20 @@ module.exports = async function (env, argv) {
     "os": require.resolve("os-browserify/browser"),
   };
 
+  // Fix missing file extensions for ES modules
+  config.resolve.extensionAlias = {
+    ...config.resolve.extensionAlias,
+    ".js": [".js", ".ts", ".tsx", ".jsx"],
+    ".mjs": [".mjs", ".mts"],
+  };
+
+  // Add rule to handle missing extensions in node_modules
+  config.module.rules.push({
+    test: /\.m?js$/,
+    resolve: {
+      fullySpecified: false, // Disable the fully specified requirement
+    },
+  });
+
   return config;
 };

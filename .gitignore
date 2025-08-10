@@ -1,35 +1,369 @@
-# dependencies
-node_modules/
+# ================================================
+# SocialCrafters Project - Comprehensive .gitignore
+# ================================================
 
-# expo
+# ==========================================
+# SECURITY & SENSITIVE FILES (CRITICAL)
+# ==========================================
+# Environment files containing secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.staging
+.env.production
+*.env
+.env.*
+
+# Database files with potential sensitive data
+*.sqlite3
+*.db
+*.sql
+db.sqlite3
+
+# Secret keys and certificates
+*.key
+*.pem
+*.p8
+*.p12
+*.mobileprovision
+*.jks
+*.keystore
+secrets/
+config/secrets.yml
+config/master.key
+
+# API keys and credentials
+api_keys.txt
+credentials.json
+google_credentials.json
+aws_credentials
+.aws/
+.gcp/
+
+# SSH keys
+id_rsa
+id_rsa.pub
+*.pub
+.ssh/
+
+# ==========================================
+# DEPENDENCIES & BUILD ARTIFACTS
+# ==========================================
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+yarn.lock
+.yarn/
+.pnp.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Python virtual environments
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ==========================================
+# EXPO & REACT NATIVE
+# ==========================================
 .expo/
+.expo-shared/
 dist/
 web-build/
 expo-env.d.ts
-
-# native
 *.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-
-# metro
 .metro-health-check*
 
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
+# ==========================================
+# DJANGO BACKEND
+# ==========================================
+# Django
+*.log
+local_settings.py
+db.sqlite3-journal
+media/
+staticfiles/
+static/
+.coverage
+htmlcov/
+.pytest_cache/
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
 
-# macos
+# Django migrations (optional - uncomment if you want to ignore)
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# ==========================================
+# DEVELOPMENT & IDE FILES
+# ==========================================
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ==========================================
+# SYSTEM FILES
+# ==========================================
+# macOS
 .DS_Store
-*.pem
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 
-# local env files
-.env*.local
-.env
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
 
-# typescript
-*.tsbuildinfo
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ==========================================
+# TEMPORARY & CACHE FILES
+# ==========================================
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+*.rej
+*~
+.#*
+#*#
+
+# Logs
+*.log
+logs/
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Cache directories
+.cache/
+.npm/
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# ==========================================
+# TESTING & COVERAGE
+# ==========================================
+# Test coverage
+coverage/
+*.lcov
+.nyc_output
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# ==========================================
+# BUILD & DEPLOYMENT FILES
+# ==========================================
+# Build directories
+build/
+dist/
+out/
+.next/
+.nuxt/
+.output/
+.vercel/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# ==========================================
+# DOCUMENTATION DRAFTS & TUTORIALS
+# ==========================================
+# Tutorial and learning files
+tutorial/
+tutorials/
+examples/
+samples/
+test-files/
+playground/
+sandbox/
+scratch/
+notes/
+TODO.md
+NOTES.md
+*.draft.*
+*.tutorial.*
+*.example.*
+*.sample.*
+
+# Documentation drafts
+docs/drafts/
+*.draft.md
+README.draft.md
+CHANGELOG.draft.md
+
+# ==========================================
+# PERFORMANCE & MONITORING
+# ==========================================
+# Performance monitoring
+.next/trace
+.vercel/
+
+# ==========================================
+# MISCELLANEOUS
+# ==========================================
+# Backup files
+*.bak
+*.backup
+*.old
+*.save
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Large media files (add specific extensions as needed)
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.webm
+*.mkv
+
+# Design files (can be large)
+*.psd
+*.ai
+*.sketch
+*.fig
+*.xd
+
+# ==========================================
+# PROJECT-SPECIFIC EXCLUSIONS
+# ==========================================
+# Remove any test/demo content
+demo/
+test-data/
+mock-data/
+sample-images/
+placeholder-content/
+
+# Frontend artifacts that can be regenerated
+frontend/.expo/
+frontend/dist/
+frontend/web-build/
+frontend/node_modules/
+
+# Backend artifacts that can be regenerated
+backend/__pycache__/
+backend/staticfiles/
+backend/media/uploads/
+
+# Development databases
+backend/db.sqlite3*
+development.db
+test.db
+
+# ==========================================
+# SECURITY SCANNERS & TOOLS
+# ==========================================
+# Security scan results
+.snyk
+.security/
+security-scan-results/
+vulnerability-reports/
+
+# ==========================================
+# END OF .gitignore
+# ==========================================

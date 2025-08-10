@@ -1,10 +1,108 @@
-# Crafters Social Feed - ALX ProDev Frontend Project
+# SocialCrafters - Full-Stack Social Media Platform
 
-A minimalist mobile social media app designed specifically for crafters and handmade product sellers. This application enables users to connect, engage, and market their work in real time through a dynamic and interactive feed.
+A comprehensive social media application designed specifically for crafters, artists, and workshop instructors. This platform enables creative professionals to showcase their work, connect with fellow crafters, book workshops, and build a thriving community around handmade crafts and artistic endeavors.
 
-## Project Overview
+## 🏗️ Project Structure
 
-This project serves as a major learning showcase from the **ALX ProDev Frontend Engineering Program**, demonstrating modern mobile development practices, full-stack integration, and real-world application building skills.
+```
+alx-project-nexus/
+├── frontend/                    # React Native/Expo Mobile App
+│   ├── app/                    # Screens and navigation
+│   │   ├── (tabs)/            # Tab-based navigation
+│   │   │   ├── index.tsx      # Home feed
+│   │   │   ├── profile.tsx    # User profile
+│   │   │   ├── messages.tsx   # Messaging system
+│   │   │   ├── workshops.tsx  # Workshop discovery
+│   │   │   └── notifications.tsx # Activity notifications
+│   │   ├── conversation.tsx   # Chat conversations
+│   │   ├── user-profile.tsx   # Dynamic user profiles
+│   │   └── workshop-booking.tsx # Workshop booking
+│   ├── components/            # Reusable UI components
+│   ├── hooks/                 # Custom React hooks
+│   ├── graphql/              # GraphQL integration
+│   ├── types/                # TypeScript definitions
+│   ├── assets/               # Images and icons
+│   └── README.md             # Frontend documentation
+├── backend/                   # Django API Server
+│   ├── apps/                 # Django applications
+│   │   ├── users/           # User management
+│   │   ├── posts/           # Posts and content
+│   │   └── interactions/    # Social interactions
+│   ├── social_backend/      # Main Django project
+│   ├── ERD.png             # Database schema diagram
+│   ├── API_DOCUMENTATION.md # API documentation
+│   └── README.md           # Backend documentation
+├── README.md               # This file - Project overview
+└── .git/                  # Git repository
+```
+
+## 🚀 Quick Start
+
+### Frontend (React Native/Expo)
+```bash
+cd frontend
+npm install
+npx expo start
+```
+
+### Backend (Django)
+```bash
+cd backend
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+## 📱 Application Features
+
+### **Social Media Core**
+- **Instagram-like Interface** with craft-focused content
+- **Interactive Posts** with likes, comments, and sharing
+- **User Profiles** with portfolio showcases and bio information
+- **Real-time Messaging** with conversation management
+- **Activity Notifications** for social engagement
+
+### **Craft-Specific Features**
+- **Workshop Discovery** and booking system
+- **Instructor Profiles** with teaching capabilities
+- **Craft Categories** and specialized content
+- **Portfolio Management** for showcasing artwork
+- **Community Building** around craft specializations
+
+### **Technical Features**
+- **Responsive Design** optimized for mobile and tablet
+- **Centralized Layout** with consistent UI patterns
+- **Dynamic User Navigation** between profiles
+- **Real-time Updates** and notifications
+- **Offline-Ready** progressive web app capabilities
+
+## 📊 Database Design
+
+![Entity Relationship Diagram](backend/ERD.png)
+
+The database architecture supports a comprehensive social media platform with:
+- **User Management** with authentication and profiles
+- **Content Management** for posts and media
+- **Social Interactions** including likes, comments, and follows
+- **Workshop System** for booking and discovery
+- **Messaging System** for real-time communication
+
+## 🎯 Project Overview
+
+This project serves as a comprehensive showcase from the **ALX ProDev Engineering Programs**, demonstrating full-stack development skills, modern software architecture, and collaborative development practices. The platform combines:
+
+- **Frontend Excellence**: React Native mobile app with Instagram-like UX
+- **Backend Robustness**: Django API with GraphQL integration
+- **Modern Architecture**: Microservices-ready design patterns
+- **Industry Standards**: Production-ready code quality and deployment practices
+
+### **Key Achievements**
+- ✅ **Full-Stack Integration**: Seamless frontend-backend communication
+- ✅ **Mobile-First Design**: Responsive, accessible user interface
+- ✅ **Social Media Features**: Complete engagement and interaction system
+- ✅ **Workshop Ecosystem**: Booking and discovery for craft instructors
+- ✅ **Real-time Capabilities**: Live messaging and notifications
+- ✅ **Scalable Architecture**: Database design for production scaling
 
 ## About ALX ProDev Frontend Engineering Program
 
@@ -24,6 +122,38 @@ The ProDev Backend Engineering program is a comprehensive curriculum focused on 
 - **Database Management**: Database design, optimization, and scaling strategies
 - **Advanced Concepts**: Asynchronous programming, caching strategies, and microservices architecture
 - **Industry Best Practices**: Code quality, testing, security, and performance optimization
+
+## 🛠️ Technology Stack
+
+### **Frontend Technologies**
+- **React Native** with Expo SDK 53 - Cross-platform mobile development
+- **TypeScript** - Type-safe JavaScript for better development experience
+- **Expo Router** - File-based navigation system
+- **Lucide React Native** - Beautiful, consistent icons
+- **Apollo GraphQL** - Efficient data fetching and state management
+
+### **Backend Technologies**
+- **Django 4.2+** - Robust Python web framework
+- **GraphQL** with Graphene-Django - Flexible API query language
+- **SQLite/PostgreSQL** - Relational database management
+- **Django REST Framework** - API development utilities
+- **JWT Authentication** - Secure token-based authentication
+
+### **Development & Deployment**
+- **Git** - Version control and collaboration
+- **Expo Application Services (EAS)** - Mobile app deployment
+- **Docker** - Containerization for consistent environments
+- **CI/CD Pipelines** - Automated testing and deployment
+
+## 🏛️ Architecture Overview
+
+The SocialCrafters platform follows modern software architecture principles:
+
+- **Separation of Concerns**: Frontend and backend in dedicated directories
+- **API-First Design**: GraphQL API enabling multiple client applications
+- **Component-Based UI**: Reusable React Native components
+- **Responsive Design**: Mobile-first with tablet optimization
+- **Scalable Database**: Normalized schema with proper indexing
 
 ## Major Learnings & Technologies
 
@@ -294,53 +424,57 @@ GraphQL API available at `/graphql` with schema including:
 ## Project Deliverables
 
 ### ERD Database Design
-**Entity Relationship Diagram**: Complete visual representation of the Crafters Social Feed database schema
+**Entity Relationship Diagram**: Complete visual representation of the SocialCrafters database schema
 
-![Crafters Social Feed ERD](./assets/images/ERD.png "Crafters Social Feed Database Schema")
+![SocialCrafters ERD](backend/ERD.png "SocialCrafters Database Schema")
 
-**Key Entities & Relationships**:
-- **User Model**: Crafter profiles with authentication and profile information
-- **Post Model**: Craft posts with media, descriptions, and metadata
-- **Interaction Model**: Likes, comments, follows, and social engagement
-- **Category Model**: Craft categories and specializations
-- **Media Model**: Image and video file management for portfolios
+The comprehensive database design includes detailed documentation in the [Backend README](backend/README.md).
 
-**Database Design Features**:
-- Normalized relational design with proper foreign keys
-- Optimized indexing for search and performance
-- Many-to-many relationships for social features
-- Cascade deletion policies for data integrity
+## 📚 Documentation
+
+### **Detailed Documentation**
+- 📱 **[Frontend Documentation](frontend/README.md)** - React Native app setup, architecture, and features
+- 🐍 **[Backend Documentation](backend/README.md)** - Django API, database design, and deployment
+- 📊 **[API Documentation](backend/API_DOCUMENTATION.md)** - GraphQL schema and endpoint details
+
+### **Key Resources**
+- **ERD Schema**: Visual database design located at `backend/ERD.png`
+- **Component Library**: Reusable UI components in `frontend/components/`
+- **GraphQL Integration**: Type-safe API layer with Apollo Client
+- **Workshop System**: Complete booking and discovery functionality
 
 ### Project Presentation
-**Slide Deck**: Comprehensive presentation covering project architecture, implementation, and learnings
+**Slide Deck**: Comprehensive presentation covering full-stack architecture, implementation, and collaborative development
 
-**Link**: [Project Presentation - Crafters Social Feed](https://docs.google.com/presentation/d/your-slides-link-here)
+**Link**: [Project Presentation - SocialCrafters Full-Stack Platform](https://docs.google.com/presentation/d/your-slides-link-here)
 
 **Presentation Outline**:
 1. **Project Overview & Objectives**
-2. **Technology Stack & Architecture**
-3. **Database Design & ERD Explanation**
-4. **Frontend Implementation (React Native/Expo)**
-5. **Backend Implementation (Django/GraphQL)**
-6. **Integration & Collaboration Process**
-7. **Challenges & Solutions**
-8. **Industry Best Practices Applied**
-9. **Deployment & Production Setup**
-10. **Demo & Live Features**
+2. **Full-Stack Architecture & Technology Decisions**
+3. **Database Design & ERD Explanation** - [View ERD](backend/ERD.png)
+4. **Frontend Implementation** - [React Native Documentation](frontend/README.md)
+5. **Backend Implementation** - [Django API Documentation](backend/README.md)
+6. **GraphQL Integration & API Design**
+7. **Collaborative Development Process**
+8. **Challenges & Solutions**
+9. **Industry Best Practices Applied**
+10. **Deployment & Production Setup**
+11. **Demo & Live Features**
 
 ### Demo Video
-**Project Demonstration**: 5-minute video showcasing the Crafters Social Feed in action
+**Project Demonstration**: 5-minute video showcasing the SocialCrafters platform in action
 
-**Link**: [Demo Video - Crafters Social Feed App](https://your-video-link-here)
+**Link**: [Demo Video - SocialCrafters Full-Stack Platform](https://your-video-link-here)
 
 **Demo Content**:
 - **User Registration & Authentication**: New crafter signup and login flow
-- **Profile Creation**: Setting up crafter profile with specializations
-- **Craft Portfolio**: Uploading and showcasing handmade products
-- **Social Feed**: Browsing fellow crafters' latest creations
-- **Interactive Features**: Liking, commenting, and following other crafters
-- **Real-time Updates**: Live notifications and feed updates
-- **Search & Discovery**: Finding crafters by craft type and location
+- **Profile Creation**: Setting up crafter profile with workshop capabilities
+- **Social Feed**: Instagram-like browsing experience with craft content
+- **Workshop Discovery**: Finding and booking creative workshops
+- **Interactive Features**: Liking, commenting, and user profile navigation
+- **Messaging System**: Real-time conversations between crafters
+- **Portfolio Showcase**: Artist gallery and work presentation
+- **Responsive Design**: Mobile and tablet optimization demonstration
 
 **Industry Best Practices Demonstrated**:
 - **Mobile-First Design**: Responsive UI optimized for mobile devices
@@ -365,6 +499,23 @@ GraphQL API available at `/graphql` with schema including:
 
 ---
 
-**Built with love as part of the ALX ProDev Frontend & Backend Engineering Programs**
+## 🤝 ALX ProDev Collaboration
+
+**Frontend Team**: React Native/Expo development with modern mobile UX patterns
+**Backend Team**: Django API development with GraphQL integration
+**Collaboration Tools**: Git workflows, shared documentation, and unified testing strategies
+
+**Built with ❤️ as part of the ALX ProDev Frontend & Backend Engineering Programs**
 
 *This project showcases the culmination of intensive learning in both frontend and backend development, demonstrating full-stack application building skills, collaborative development practices, and modern software engineering principles.*
+
+## 📄 License
+
+This project is created for educational purposes as part of the ALX ProDev Engineering Programs.
+
+## 🙏 Acknowledgments
+
+- **ALX ProDev Engineering Programs** for providing comprehensive full-stack development education
+- **Crafting Community** for inspiring this specialized social platform
+- **Open Source Libraries** that made this project possible
+- **Collaborative Learning** environment that enhanced the development process

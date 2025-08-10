@@ -11,11 +11,5 @@ module.exports = async function (env, argv) {
     argv
   );
 
-  // Add support for path aliases
-  config.resolve.alias = {
-    ...config.resolve.alias,
-    '@': __dirname,
-  };
-
   return config;
 };

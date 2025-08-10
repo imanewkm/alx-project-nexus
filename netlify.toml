@@ -1,0 +1,22 @@
+[build]
+  base = "frontend"
+  command = "npm install && npm run build:web"
+  publish = "frontend/dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production]
+  command = "npm install && npm run build:web"
+
+[context.deploy-preview]
+  command = "npm install && npm run build:web"
+
+[context.branch-deploy]
+  command = "npm install && npm run build:web"

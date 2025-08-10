@@ -1,20 +1,28 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Settings, CreditCard as Edit } from 'lucide-react-native';
+import { Settings, Edit3, Calendar } from 'lucide-react-native';
+import { useRouter } from 'expo-router';
+
+const { width: screenWidth } = Dimensions.get('window');
+const isTablet = screenWidth >= 768;
 
 export default function ProfileScreen() {
+  const router = useRouter();
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
+        <View style={styles.headerLeft} />
         <Text style={styles.headerTitle}>Profile</Text>
         <TouchableOpacity style={styles.settingsButton}>
           <Settings size={24} color="#6B7280" />
         </TouchableOpacity>
       </View>
       
-      <ScrollView style={styles.content}>
-        <View style={styles.profileSection}>
+      <View style={styles.feedContainer}>
+        <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+          <View style={styles.profileSection}>
           <Image
             source={{
               uri: 'https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
@@ -31,10 +39,19 @@ export default function ProfileScreen() {
             📅 Weekend workshops available
           </Text>
           
-          <TouchableOpacity style={styles.editButton}>
-            <Edit size={16} color="#3B82F6" />
-            <Text style={styles.editButtonText}>Edit Profile</Text>
-          </TouchableOpacity>
+          <View style={[styles.buttonRow, isTablet ? styles.buttonRowDesktop : styles.buttonRowMobile]}>
+            <TouchableOpacity style={[styles.editButton, isTablet ? styles.editButtonDesktop : styles.editButtonMobile]}>
+              <Edit3 size={16} color="#3B82F6" />
+              <Text style={styles.editButtonText}>Edit Profile</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity 
+              style={[styles.workshopButton, isTablet ? styles.workshopButtonDesktop : styles.workshopButtonMobile]}
+            >
+              <Calendar size={16} color="#FFFFFF" />
+              <Text style={styles.workshopButtonText}>Add Workshop</Text>
+            </TouchableOpacity>
+          </View>
         </View>
         
         <View style={styles.statsSection}>
@@ -88,7 +105,8 @@ export default function ProfileScreen() {
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
@@ -100,24 +118,36 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#FFFFFF',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: 20,
+    paddingVertical: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#E5E7EB',
+    borderBottomColor: '#DBDBDB',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  headerLeft: {
+    width: 32, // Match the settings button width for balance
+  },
   headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#111827',
+    fontSize: 28,
+    fontWeight: '600',
+    color: '#262626',
+    letterSpacing: -0.5,
+    fontFamily: 'System',
   },
   settingsButton: {
     padding: 8,
   },
+  feedContainer: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#F9FAFB',
+  },
   content: {
     flex: 1,
+    width: '100%',
+    maxWidth: 470,
   },
   profileSection: {
     backgroundColor: '#FFFFFF',
@@ -158,9 +188,50 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#3B82F6',
     borderRadius: 20,
+    justifyContent: 'center',
+  },
+  editButtonDesktop: {
+    width: 140,
+    marginRight: 8,
+  },
+  editButtonMobile: {
+    width: '100%',
+    marginBottom: 12,
   },
   editButtonText: {
     color: '#3B82F6',
+    fontSize: 16,
+    fontWeight: '600',
+    marginLeft: 8,
+  },
+  buttonRow: {
+    width: '100%',
+  },
+  buttonRowDesktop: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  buttonRowMobile: {
+    flexDirection: 'column',
+  },
+  workshopButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: '#007AFF',
+    borderRadius: 20,
+    justifyContent: 'center',
+  },
+  workshopButtonDesktop: {
+    width: 150,
+    marginLeft: 8,
+  },
+  workshopButtonMobile: {
+    width: '100%',
+  },
+  workshopButtonText: {
+    color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
     marginLeft: 8,

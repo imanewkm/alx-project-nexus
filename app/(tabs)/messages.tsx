@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Search, Edit } from 'lucide-react-native';
+import { useRouter } from 'expo-router';
 import { Conversation } from '@/types/graphql';
 
 // Mock conversations data
@@ -165,6 +166,8 @@ const mockConversations: Conversation[] = [
 ];
 
 export default function MessagesScreen() {
+  const router = useRouter();
+  
   const formatTimeAgo = (dateString: string) => {
     const date = new Date(dateString);
     const now = new Date();
@@ -182,12 +185,17 @@ export default function MessagesScreen() {
     const isUnread = item.unreadCount > 0;
 
     return (
-      <TouchableOpacity style={styles.conversationItem}>
-        <Image
-          source={{ uri: otherUser.avatar }}
-          style={styles.avatar}
-        />
-        <View style={styles.conversationContent}>
+      <View style={styles.conversationItem}>
+        <TouchableOpacity onPress={() => router.push(`/user-profile?id=${otherUser.id}`)}>
+          <Image
+            source={{ uri: otherUser.avatar }}
+            style={styles.avatar}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.conversationContent}
+          onPress={() => router.push(`/conversation?id=${item.id}`)}
+        >
           <View style={styles.conversationHeader}>
             <Text style={[styles.name, isUnread && styles.unreadName]}>
               {otherUser.firstName && otherUser.lastName
@@ -209,8 +217,8 @@ export default function MessagesScreen() {
               </View>
             )}
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
     );
   };
 
@@ -219,26 +227,31 @@ export default function MessagesScreen() {
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
+          <View style={styles.headerLeft} />
           <Text style={styles.headerTitle}>Messages</Text>
           <TouchableOpacity style={styles.newMessageButton}>
             <Edit size={20} color="#262626" />
           </TouchableOpacity>
         </View>
 
-        <View style={styles.searchContainer}>
-          <View style={styles.searchBar}>
-            <Search size={16} color="#8E8E8E" />
-            <Text style={styles.searchPlaceholder}>Search conversations...</Text>
+        <View style={styles.feedContainer}>
+          <View style={styles.contentContainer}>
+            <View style={styles.searchContainer}>
+              <View style={styles.searchBar}>
+                <Search size={16} color="#8E8E8E" />
+                <Text style={styles.searchPlaceholder}>Search conversations...</Text>
+              </View>
+            </View>
+
+            <FlatList
+              data={mockConversations}
+              renderItem={renderConversation}
+              keyExtractor={(item) => item.id}
+              style={styles.conversationsList}
+              showsVerticalScrollIndicator={false}
+            />
           </View>
         </View>
-
-        <FlatList
-          data={mockConversations}
-          renderItem={renderConversation}
-          keyExtractor={(item) => item.id}
-          style={styles.conversationsList}
-          showsVerticalScrollIndicator={false}
-        />
       </SafeAreaView>
     </View>
   );
@@ -270,8 +283,21 @@ const styles = StyleSheet.create({
     letterSpacing: -0.5,
     fontFamily: 'System',
   },
+  headerLeft: {
+    width: 32, // Match the edit button width for balance
+  },
   newMessageButton: {
     padding: 8,
+  },
+  feedContainer: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+  },
+  contentContainer: {
+    flex: 1,
+    width: '100%',
+    maxWidth: 470,
   },
   searchContainer: {
     paddingHorizontal: 16,

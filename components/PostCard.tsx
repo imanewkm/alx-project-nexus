@@ -9,6 +9,7 @@ import {
   Modal 
 } from 'react-native';
 import { Heart, MessageCircle, Share, MoreVertical, Flag, Copy } from 'lucide-react-native';
+import { useRouter } from 'expo-router';
 import { Post } from '@/types/graphql';
 
 interface PostCardProps {
@@ -16,11 +17,16 @@ interface PostCardProps {
 }
 
 export default function PostCard({ post }: PostCardProps) {
+  const router = useRouter();
   const [isLiked, setIsLiked] = useState(post.isLiked);
   const [likesCount, setLikesCount] = useState(post.likesCount);
   const [sharesCount, setSharesCount] = useState(post.sharesCount);
   const [showComments, setShowComments] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+
+  const handleUserPress = () => {
+    router.push(`/user-profile?id=${post.author.id}`);
+  };
 
   const handleLike = async () => {
     // Optimistic update
@@ -70,7 +76,7 @@ export default function PostCard({ post }: PostCardProps) {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <View style={styles.userInfo}>
+        <TouchableOpacity style={styles.userInfo} onPress={handleUserPress}>
           <Image
             source={{
               uri: post.author.avatar || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
@@ -88,7 +94,7 @@ export default function PostCard({ post }: PostCardProps) {
               <Text style={styles.location}>{post.location}</Text>
             )}
           </View>
-        </View>
+        </TouchableOpacity>
         <View style={styles.menuContainer}>
           <TouchableOpacity style={styles.moreButton} onPress={handleMenuPress}>
             <MoreVertical size={20} color="#262626" />

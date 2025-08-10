@@ -68,18 +68,21 @@ export default function NotificationsScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
+        <View style={styles.headerLeft} />
         <Text style={styles.headerTitle}>Notifications</Text>
+        <View style={styles.headerLeft} />
       </View>
       
-      <ScrollView style={styles.content}>
-        {mockNotifications.map((notification) => (
-          <TouchableOpacity
-            key={notification.id}
-            style={[
-              styles.notificationItem,
-              !notification.read && styles.unreadNotification
-            ]}
-          >
+      <View style={styles.feedContainer}>
+        <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+          {mockNotifications.map((notification) => (
+            <TouchableOpacity
+              key={notification.id}
+              style={[
+                styles.notificationItem,
+                !notification.read && styles.unreadNotification
+              ]}
+            >
             <Image
               source={{ uri: notification.user.avatar }}
               style={styles.avatar}
@@ -103,7 +106,8 @@ export default function NotificationsScreen() {
             {!notification.read && <View style={styles.unreadDot} />}
           </TouchableOpacity>
         ))}
-      </ScrollView>
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
@@ -115,18 +119,33 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#FFFFFF',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#E5E7EB',
   },
+  headerLeft: {
+    width: 24,
+  },
   headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#111827',
+    fontSize: 28,
+    fontWeight: '600',
+    color: '#262626',
+    letterSpacing: -0.5,
+    fontFamily: 'System',
+  },
+  feedContainer: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
   },
   content: {
     flex: 1,
+    width: '100%',
+    maxWidth: 470,
   },
   notificationItem: {
     backgroundColor: '#FFFFFF',

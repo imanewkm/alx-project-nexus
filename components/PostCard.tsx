@@ -5,9 +5,10 @@ import {
   Image, 
   TouchableOpacity, 
   StyleSheet, 
-  Alert 
+  Alert,
+  Modal 
 } from 'react-native';
-import { Heart, MessageCircle, Share, MoveHorizontal as MoreHorizontal } from 'lucide-react-native';
+import { Heart, MessageCircle, Share, MoreVertical, Flag, Copy } from 'lucide-react-native';
 import { Post } from '@/types/graphql';
 
 interface PostCardProps {
@@ -19,6 +20,7 @@ export default function PostCard({ post }: PostCardProps) {
   const [likesCount, setLikesCount] = useState(post.likesCount);
   const [sharesCount, setSharesCount] = useState(post.sharesCount);
   const [showComments, setShowComments] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleLike = async () => {
     // Optimistic update
@@ -33,6 +35,24 @@ export default function PostCard({ post }: PostCardProps) {
   const handleShare = async () => {
     setSharesCount(sharesCount + 1);
     Alert.alert('Success', 'Post shared successfully');
+  };
+
+  const handleMenuPress = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const handleMenuOption = (option: string) => {
+    setShowMenu(false);
+    switch (option) {
+      case 'copy':
+        Alert.alert('Copied', 'Post link copied to clipboard');
+        break;
+      case 'report':
+        Alert.alert('Report', 'Report functionality coming soon');
+        break;
+      default:
+        break;
+    }
   };
 
   const formatTimeAgo = (dateString: string) => {
@@ -69,9 +89,31 @@ export default function PostCard({ post }: PostCardProps) {
             )}
           </View>
         </View>
-        <TouchableOpacity style={styles.moreButton}>
-          <MoreHorizontal size={20} color="#262626" />
-        </TouchableOpacity>
+        <View style={styles.menuContainer}>
+          <TouchableOpacity style={styles.moreButton} onPress={handleMenuPress}>
+            <MoreVertical size={20} color="#262626" />
+          </TouchableOpacity>
+          
+          {showMenu && (
+            <View style={styles.dropdownMenu}>
+              <TouchableOpacity 
+                style={styles.menuItem}
+                onPress={() => handleMenuOption('copy')}
+              >
+                <Copy size={16} color="#262626" />
+                <Text style={styles.menuText}>Copy Link</Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity 
+                style={styles.menuItem}
+                onPress={() => handleMenuOption('report')}
+              >
+                <Flag size={16} color="#262626" />
+                <Text style={styles.menuText}>Report</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </View>
       </View>
 
       {/* Image */}
@@ -190,6 +232,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 10,
+    position: 'relative',
+    zIndex: 10,
   },
   userInfo: {
     flexDirection: 'row',
@@ -217,6 +261,39 @@ const styles = StyleSheet.create({
   },
   moreButton: {
     padding: 8,
+  },
+  menuContainer: {
+    position: 'relative',
+  },
+  dropdownMenu: {
+    position: 'absolute',
+    top: 40,
+    right: 0,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 10,
+    minWidth: 150,
+    zIndex: 1000,
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
+  },
+  menuItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  menuText: {
+    fontSize: 14,
+    color: '#262626',
+    marginLeft: 12,
   },
   postImage: {
     width: '100%',

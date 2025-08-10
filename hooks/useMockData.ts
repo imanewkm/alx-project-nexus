@@ -20,7 +20,36 @@ const mockPosts: Post[] = [
     commentsCount: 8,
     sharesCount: 3,
     isLiked: false,
-    comments: []
+    comments: [
+      {
+        id: '1',
+        content: 'This is absolutely beautiful! How long did it take you to make?',
+        author: {
+          id: '2',
+          username: 'mike_potter',
+          email: 'mike@example.com',
+          firstName: 'Mike',
+          lastName: 'Chen',
+          avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+        },
+        post: '1',
+        createdAt: new Date(Date.now() - 1000 * 60 * 20).toISOString()
+      },
+      {
+        id: '2',
+        content: 'Love the natural texture! Do you sell these?',
+        author: {
+          id: '3',
+          username: 'emma_knits',
+          email: 'emma@example.com',
+          firstName: 'Emma',
+          lastName: 'Wilson',
+          avatar: 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+        },
+        post: '1',
+        createdAt: new Date(Date.now() - 1000 * 60 * 15).toISOString()
+      }
+    ]
   },
   {
     id: '2',
@@ -40,7 +69,22 @@ const mockPosts: Post[] = [
     commentsCount: 23,
     sharesCount: 12,
     isLiked: true,
-    comments: []
+    comments: [
+      {
+        id: '3',
+        content: 'I love painting! Can you teach me the basics?',
+        author: {
+          id: '1',
+          username: 'sarah_weaver',
+          email: 'sarah@example.com',
+          firstName: 'Sarah',
+          lastName: 'Johnson',
+          avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+        },
+        post: '2',
+        createdAt: new Date(Date.now() - 1000 * 60 * 60).toISOString()
+      }
+    ]
   },
   {
     id: '3',
@@ -60,7 +104,22 @@ const mockPosts: Post[] = [
     commentsCount: 15,
     sharesCount: 7,
     isLiked: false,
-    comments: []
+    comments: [
+      {
+        id: '4',
+        content: 'Beautiful work! Do you have any scarves available?',
+        author: {
+          id: '4',
+          username: 'alex_carver',
+          email: 'alex@example.com',
+          firstName: 'Alex',
+          lastName: 'Rodriguez',
+          avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+        },
+        post: '3',
+        createdAt: new Date(Date.now() - 1000 * 60 * 60 * 3).toISOString()
+      }
+    ]
   },
   {
     id: '4',

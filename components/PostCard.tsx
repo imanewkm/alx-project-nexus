@@ -18,6 +18,7 @@ export default function PostCard({ post }: PostCardProps) {
   const [isLiked, setIsLiked] = useState(post.isLiked);
   const [likesCount, setLikesCount] = useState(post.likesCount);
   const [sharesCount, setSharesCount] = useState(post.sharesCount);
+  const [showComments, setShowComments] = useState(false);
 
   const handleLike = async () => {
     // Optimistic update
@@ -26,8 +27,7 @@ export default function PostCard({ post }: PostCardProps) {
   };
 
   const handleComment = () => {
-    // Navigate to comments screen - implement navigation
-    Alert.alert('Comments', 'Comments feature coming soon');
+    setShowComments(!showComments);
   };
 
   const handleShare = async () => {
@@ -133,9 +133,42 @@ export default function PostCard({ post }: PostCardProps) {
 
       {/* Comments preview */}
       {post.commentsCount > 0 && (
-        <TouchableOpacity style={styles.commentsPreview}>
-          <Text style={styles.viewCommentsText}>View all {post.commentsCount} comments</Text>
+        <TouchableOpacity 
+          style={styles.commentsPreview}
+          onPress={() => setShowComments(!showComments)}
+        >
+          <Text style={styles.viewCommentsText}>
+            {showComments ? 'Hide comments' : `View all ${post.commentsCount} comments`}
+          </Text>
         </TouchableOpacity>
+      )}
+
+      {/* Comments section */}
+      {showComments && (
+        <View style={styles.commentsSection}>
+          {post.comments.map((comment) => (
+            <View key={comment.id} style={styles.commentItem}>
+              <Image
+                source={{ uri: comment.author.avatar }}
+                style={styles.commentAvatar}
+              />
+              <View style={styles.commentContent}>
+                <Text style={styles.commentText}>
+                  <Text style={styles.commentUsername}>
+                    {comment.author.firstName && comment.author.lastName
+                      ? `${comment.author.firstName} ${comment.author.lastName}`
+                      : comment.author.username
+                    }
+                  </Text>
+                  <Text style={styles.commentMessage}> {comment.content}</Text>
+                </Text>
+                <Text style={styles.commentTime}>
+                  {formatTimeAgo(comment.createdAt)}
+                </Text>
+              </View>
+            </View>
+          ))}
+        </View>
       )}
 
       {/* Time ago */}
@@ -232,6 +265,39 @@ const styles = StyleSheet.create({
   viewCommentsText: {
     fontSize: 14,
     color: '#8E8E8E',
+  },
+  commentsSection: {
+    paddingHorizontal: 16,
+    paddingBottom: 8,
+  },
+  commentItem: {
+    flexDirection: 'row',
+    marginBottom: 12,
+  },
+  commentAvatar: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    marginRight: 8,
+  },
+  commentContent: {
+    flex: 1,
+  },
+  commentText: {
+    fontSize: 14,
+    lineHeight: 18,
+    color: '#262626',
+  },
+  commentUsername: {
+    fontWeight: '600',
+  },
+  commentMessage: {
+    fontWeight: '400',
+  },
+  commentTime: {
+    fontSize: 12,
+    color: '#8E8E8E',
+    marginTop: 2,
   },
   timeContainer: {
     paddingHorizontal: 16,

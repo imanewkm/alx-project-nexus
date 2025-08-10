@@ -64,16 +64,13 @@ export default function PostCard({ post }: PostCardProps) {
                 : post.author.username
               }
             </Text>
-            <Text style={styles.timeAgo}>{formatTimeAgo(post.createdAt)}</Text>
+            <Text style={styles.location}>The Zoo</Text>
           </View>
         </View>
         <TouchableOpacity style={styles.moreButton}>
-          <MoreHorizontal size={20} color="#6B7280" />
+          <MoreHorizontal size={20} color="#262626" />
         </TouchableOpacity>
       </View>
-
-      {/* Content */}
-      <Text style={styles.content}>{post.content}</Text>
 
       {/* Image */}
       {post.image && (
@@ -86,35 +83,62 @@ export default function PostCard({ post }: PostCardProps) {
 
       {/* Actions */}
       <View style={styles.actions}>
-        <TouchableOpacity 
-          style={styles.actionButton}
-          onPress={handleLike}
-        >
-          <Heart 
-            size={24} 
-            color={isLiked ? '#EF4444' : '#6B7280'} 
-            fill={isLiked ? '#EF4444' : 'none'}
-          />
-          <Text style={[styles.actionText, isLiked && styles.likedText]}>
-            {likesCount}
+        <View style={styles.leftActions}>
+          <TouchableOpacity 
+            style={styles.actionButton}
+            onPress={handleLike}
+          >
+            <Heart 
+              size={24} 
+              color={isLiked ? '#ED4956' : '#262626'} 
+              fill={isLiked ? '#ED4956' : 'none'}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={styles.actionButton}
+            onPress={handleComment}
+          >
+            <MessageCircle size={24} color="#262626" />
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={styles.actionButton}
+            onPress={handleShare}
+          >
+            <Share size={24} color="#262626" />
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Likes count */}
+      <View style={styles.likesContainer}>
+        <Text style={styles.likesText}>{likesCount} likes</Text>
+      </View>
+
+      {/* Content */}
+      <View style={styles.contentContainer}>
+        <Text style={styles.content}>
+          <Text style={styles.username}>
+            {post.author.firstName && post.author.lastName 
+              ? `${post.author.firstName} ${post.author.lastName}`
+              : post.author.username
+            }
           </Text>
-        </TouchableOpacity>
+          <Text style={styles.captionText}> {post.content}</Text>
+        </Text>
+      </View>
 
-        <TouchableOpacity 
-          style={styles.actionButton}
-          onPress={handleComment}
-        >
-          <MessageCircle size={24} color="#6B7280" />
-          <Text style={styles.actionText}>{post.commentsCount}</Text>
+      {/* Comments preview */}
+      {post.commentsCount > 0 && (
+        <TouchableOpacity style={styles.commentsPreview}>
+          <Text style={styles.viewCommentsText}>View all {post.commentsCount} comments</Text>
         </TouchableOpacity>
+      )}
 
-        <TouchableOpacity 
-          style={styles.actionButton}
-          onPress={handleShare}
-        >
-          <Share size={24} color="#6B7280" />
-          <Text style={styles.actionText}>{sharesCount}</Text>
-        </TouchableOpacity>
+      {/* Time ago */}
+      <View style={styles.timeContainer}>
+        <Text style={styles.timeText}>{formatTimeAgo(post.createdAt).toUpperCase()}</Text>
       </View>
     </View>
   );
@@ -123,75 +147,98 @@ export default function PostCard({ post }: PostCardProps) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF',
-    marginBottom: 8,
-    paddingVertical: 16,
+    marginBottom: 16,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16,
-    marginBottom: 12,
+    paddingVertical: 10,
   },
   userInfo: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
     marginRight: 12,
   },
   userDetails: {
     flex: 1,
   },
   username: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#111827',
-    marginBottom: 2,
-  },
-  timeAgo: {
     fontSize: 14,
-    color: '#6B7280',
+    fontWeight: '600',
+    color: '#262626',
+    lineHeight: 18,
+  },
+  location: {
+    fontSize: 12,
+    color: '#262626',
+    lineHeight: 16,
   },
   moreButton: {
-    padding: 4,
-  },
-  content: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#111827',
-    paddingHorizontal: 16,
-    marginBottom: 12,
+    padding: 8,
   },
   postImage: {
     width: '100%',
-    height: 300,
-    marginBottom: 12,
+    aspectRatio: 1,
   },
   actions: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingHorizontal: 16,
-    justifyContent: 'space-around',
-    paddingTop: 8,
-    borderTopWidth: 1,
-    borderTopColor: '#F3F4F6',
+    paddingVertical: 8,
   },
-  actionButton: {
+  leftActions: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
   },
-  actionText: {
+  actionButton: {
+    marginRight: 16,
+    padding: 8,
+  },
+  likesContainer: {
+    paddingHorizontal: 16,
+    paddingBottom: 8,
+  },
+  likesText: {
     fontSize: 14,
-    color: '#6B7280',
-    marginLeft: 8,
-    fontWeight: '500',
+    fontWeight: '600',
+    color: '#262626',
   },
-  likedText: {
-    color: '#EF4444',
+  contentContainer: {
+    paddingHorizontal: 16,
+    paddingBottom: 4,
+  },
+  content: {
+    fontSize: 14,
+    lineHeight: 18,
+    color: '#262626',
+  },
+  captionText: {
+    fontWeight: '400',
+  },
+  commentsPreview: {
+    paddingHorizontal: 16,
+    paddingVertical: 4,
+  },
+  viewCommentsText: {
+    fontSize: 14,
+    color: '#8E8E8E',
+  },
+  timeContainer: {
+    paddingHorizontal: 16,
+    paddingBottom: 16,
+  },
+  timeText: {
+    fontSize: 10,
+    color: '#8E8E8E',
+    fontWeight: '400',
+    letterSpacing: 0.2,
   },
 });

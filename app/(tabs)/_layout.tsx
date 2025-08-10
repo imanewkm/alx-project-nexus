@@ -1,19 +1,21 @@
 import { Tabs } from 'expo-router';
-import { Chrome as Home, User, Bell } from 'lucide-react-native';
+import { Home, User, Bell } from 'lucide-react-native';
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#3B82F6',
-        tabBarInactiveTintColor: '#6B7280',
+        tabBarActiveTintColor: '#262626',
+        tabBarInactiveTintColor: '#8E8E8E',
+        tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: '#FFFFFF',
-          borderTopColor: '#E5E7EB',
-          paddingTop: 5,
-          paddingBottom: 5,
-          height: 60,
+          borderTopColor: '#DBDBDB',
+          borderTopWidth: 1,
+          paddingTop: 8,
+          paddingBottom: 8,
+          height: 65,
         },
       }}>
       <Tabs.Screen
@@ -21,7 +23,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ size, color }) => (
-            <Home size={size} color={color} />
+            <Home size={26} color={color} />
           ),
         }}
       />
@@ -30,7 +32,7 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ size, color }) => (
-            <User size={size} color={color} />
+            <User size={26} color={color} />
           ),
         }}
       />
@@ -39,7 +41,7 @@ export default function TabLayout() {
         options={{
           title: 'Notifications',
           tabBarIcon: ({ size, color }) => (
-            <Bell size={size} color={color} />
+            <Bell size={26} color={color} />
           ),
         }}
       />

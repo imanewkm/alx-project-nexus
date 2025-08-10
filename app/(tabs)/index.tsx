@@ -5,7 +5,8 @@ import {
   Text, 
   StyleSheet, 
   RefreshControl,
-  ActivityIndicator 
+  ActivityIndicator,
+  StatusBar 
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Post } from '@/types/graphql';
@@ -33,7 +34,7 @@ export default function HomeScreen() {
     
     return (
       <View style={styles.loadingFooter}>
-        <ActivityIndicator size="small" color="#3B82F6" />
+        <ActivityIndicator size="small" color="#8E8E8E" />
       </View>
     );
   };
@@ -47,55 +48,77 @@ export default function HomeScreen() {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Social Feed</Text>
-      </View>
-      
-      {loading && posts.length === 0 ? (
-        renderSkeleton()
-      ) : (
-        <FlatList
-          data={posts}
-          renderItem={renderPost}
-          keyExtractor={(item) => item.id}
-          onEndReached={handleLoadMore}
-          onEndReachedThreshold={0.1}
-          refreshControl={
-            <RefreshControl
-              refreshing={loading && posts.length > 0}
-              onRefresh={handleRefresh}
-              colors={['#3B82F6']}
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.header}>
+          <Text style={styles.appName}>SocialCrafters</Text>
+        </View>
+        
+        <View style={styles.feedContainer}>
+          {loading && posts.length === 0 ? (
+            renderSkeleton()
+          ) : (
+            <FlatList
+              data={posts}
+              renderItem={renderPost}
+              keyExtractor={(item) => item.id}
+              onEndReached={handleLoadMore}
+              onEndReachedThreshold={0.1}
+              refreshControl={
+                <RefreshControl
+                  refreshing={loading && posts.length > 0}
+                  onRefresh={handleRefresh}
+                  colors={['#8E8E8E']}
+                />
+              }
+              ListFooterComponent={renderFooter}
+              showsVerticalScrollIndicator={false}
+              style={styles.feed}
+              contentContainerStyle={styles.feedContent}
             />
-          }
-          ListFooterComponent={renderFooter}
-          showsVerticalScrollIndicator={false}
-          style={styles.feed}
-        />
-      )}
-    </SafeAreaView>
+          )}
+        </View>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: '#FFFFFF',
+  },
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
   },
   header: {
     backgroundColor: '#FFFFFF',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: 20,
+    paddingVertical: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#E5E7EB',
+    borderBottomColor: '#DBDBDB',
+    alignItems: 'center',
   },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#111827',
+  appName: {
+    fontSize: 28,
+    fontWeight: '600',
+    color: '#262626',
+    letterSpacing: -0.5,
+    fontFamily: 'System',
+  },
+  feedContainer: {
+    flex: 1,
+    alignItems: 'center',
   },
   feed: {
     flex: 1,
+    width: '100%',
+    maxWidth: 470, // Similar to mobile app max width
+  },
+  feedContent: {
+    paddingBottom: 100,
   },
   loadingFooter: {
     paddingVertical: 20,

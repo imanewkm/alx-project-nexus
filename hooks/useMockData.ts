@@ -3,6 +3,55 @@ import { Post } from '@/types/graphql';
 
 const mockPosts: Post[] = [
   {
+    id: '6',
+    content: 'Finished this oil painting of the city harbor at sunset 🌅 Spent weeks perfecting the light reflections on the water. Oil on canvas, 24x36 inches ✨',
+    image: 'https://images.pexels.com/photos/1572386/pexels-photo-1572386.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    location: 'Downtown Art Studio',
+    author: {
+      id: '5',
+      username: 'maria_paints',
+      email: 'maria@example.com',
+      firstName: 'Maria',
+      lastName: 'Rodriguez',
+      avatar: 'https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+    },
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString(), // 8 hours ago
+    likesCount: 203,
+    commentsCount: 45,
+    sharesCount: 18,
+    isLiked: false,
+    comments: [
+      {
+        id: '11',
+        content: 'The light reflections are incredible! How long did this take you?',
+        author: {
+          id: '3',
+          username: 'emma_knits',
+          email: 'emma@example.com',
+          firstName: 'Emma',
+          lastName: 'Wilson',
+          avatar: 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+        },
+        post: '6',
+        createdAt: new Date(Date.now() - 1000 * 60 * 60 * 7).toISOString()
+      },
+      {
+        id: '12',
+        content: 'Absolutely stunning work! Do you sell your paintings?',
+        author: {
+          id: '4',
+          username: 'alex_carver',
+          email: 'alex@example.com',
+          firstName: 'Alex',
+          lastName: 'Rodriguez',
+          avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+        },
+        post: '6',
+        createdAt: new Date(Date.now() - 1000 * 60 * 60 * 6).toISOString()
+      }
+    ]
+  },
+  {
     id: '1',
     content: 'Just finished this beautiful hand-woven handbag using natural willow branches! 🧺 Took me 3 days but so worth it ✨',
     image: 'https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',

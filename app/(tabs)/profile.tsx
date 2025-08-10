@@ -17,15 +17,18 @@ export default function ProfileScreen() {
         <View style={styles.profileSection}>
           <Image
             source={{
-              uri: 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+              uri: 'https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
             }}
             style={styles.profileImage}
           />
-          <Text style={styles.name}>John Doe</Text>
-          <Text style={styles.username}>@johndoe</Text>
+          <Text style={styles.name}>Maria Rodriguez</Text>
+          <Text style={styles.username}>@maria_paints</Text>
           <Text style={styles.bio}>
-            Software developer passionate about creating amazing mobile experiences. 
-            Love React Native and GraphQL!
+            🎨 Professional Artist & Workshop Instructor{'\n'}
+            📍 Downtown Art Studio{'\n'}
+            🖌️ Watercolor • Acrylic • Oil Painting{'\n'}
+            ✨ Teaching art for 15+ years{'\n'}
+            📅 Weekend workshops available
           </Text>
           
           <TouchableOpacity style={styles.editButton}>
@@ -36,16 +39,53 @@ export default function ProfileScreen() {
         
         <View style={styles.statsSection}>
           <View style={styles.statItem}>
-            <Text style={styles.statNumber}>42</Text>
+            <Text style={styles.statNumber}>5</Text>
             <Text style={styles.statLabel}>Posts</Text>
           </View>
           <View style={styles.statItem}>
-            <Text style={styles.statNumber}>1.2K</Text>
+            <Text style={styles.statNumber}>2.8K</Text>
             <Text style={styles.statLabel}>Followers</Text>
           </View>
           <View style={styles.statItem}>
-            <Text style={styles.statNumber}>348</Text>
+            <Text style={styles.statNumber}>421</Text>
             <Text style={styles.statLabel}>Following</Text>
+          </View>
+        </View>
+
+        {/* Posts Grid */}
+        <View style={styles.postsSection}>
+          <Text style={styles.postsTitle}>Recent Artwork</Text>
+          <View style={styles.postsGrid}>
+            <TouchableOpacity style={styles.postItem}>
+              <Image
+                source={{ uri: 'https://images.pexels.com/photos/1572386/pexels-photo-1572386.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop' }}
+                style={styles.postImage}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.postItem}>
+              <Image
+                source={{ uri: 'https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop' }}
+                style={styles.postImage}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.postItem}>
+              <Image
+                source={{ uri: 'https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop' }}
+                style={styles.postImage}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.postItem}>
+              <Image
+                source={{ uri: 'https://images.pexels.com/photos/1509534/pexels-photo-1509534.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop' }}
+                style={styles.postImage}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.postItem}>
+              <Image
+                source={{ uri: 'https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop' }}
+                style={styles.postImage}
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -143,5 +183,32 @@ const styles = StyleSheet.create({
   statLabel: {
     fontSize: 14,
     color: '#6B7280',
+  },
+  postsSection: {
+    backgroundColor: '#FFFFFF',
+    paddingTop: 20,
+  },
+  postsTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#111827',
+    paddingHorizontal: 16,
+    marginBottom: 16,
+  },
+  postsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingHorizontal: 12,
+    paddingBottom: 20,
+  },
+  postItem: {
+    width: '33.33%',
+    aspectRatio: 1,
+    padding: 2,
+  },
+  postImage: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 4,
   },
 });

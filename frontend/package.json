@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "expo start",
     "start": "expo start",
-    "build": "npx expo export --platform web --output-dir dist --clear",
-    "build:web": "expo export --platform web --output-dir dist",
-    "build:netlify": "npx expo install --fix && expo export --platform web --output-dir dist",
-    "build:vercel": "npx expo export --platform web --output-dir dist --clear",
+    "build": "expo export:web",
+    "build:web": "expo export:web",
+    "build:netlify": "npx expo install --fix && expo export:web",
+    "build:vercel": "expo export:web",
     "lint": "expo lint",
     "serve": "npx serve dist"
   },

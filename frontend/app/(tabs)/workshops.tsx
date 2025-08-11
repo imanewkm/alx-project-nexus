@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Calendar, Clock, MapPin, Users, Star } from 'lucide-react-native';
-import { useRouter } from 'expo-router';
 
 interface Workshop {
   id: string;
@@ -132,7 +131,6 @@ const mockWorkshops: Workshop[] = [
 ];
 
 export default function WorkshopsScreen() {
-  const router = useRouter();
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);

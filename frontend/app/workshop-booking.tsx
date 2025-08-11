@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -95,7 +95,6 @@ const mockWorkshops: Workshop[] = [
 
 export default function WorkshopBookingScreen() {
   const router = useRouter();
-  const [selectedWorkshop, setSelectedWorkshop] = useState<Workshop | null>(null);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -232,7 +231,7 @@ export default function WorkshopBookingScreen() {
             <View style={styles.content}>
               <Text style={styles.pageTitle}>Book a Workshop</Text>
               <Text style={styles.pageSubtitle}>
-                Join Maria's painting workshops and improve your artistic skills in a supportive environment.
+                Join Maria&apos;s painting workshops and improve your artistic skills in a supportive environment.
               </Text>
 
               {mockWorkshops.map(renderWorkshop)}

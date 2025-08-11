@@ -2,13 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Settings, Edit3, Calendar } from 'lucide-react-native';
-import { useRouter } from 'expo-router';
 
 const { width: screenWidth } = Dimensions.get('window');
 const isTablet = screenWidth >= 768;
 
 export default function ProfileScreen() {
-  const router = useRouter();
   
   return (
     <SafeAreaView style={styles.container}>

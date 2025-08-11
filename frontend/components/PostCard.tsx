@@ -5,8 +5,7 @@ import {
   Image, 
   TouchableOpacity, 
   StyleSheet, 
-  Alert,
-  Modal 
+  Alert
 } from 'react-native';
 import { Heart, MessageCircle, Share, MoreVertical, Flag, Copy } from 'lucide-react-native';
 import { useRouter } from 'expo-router';

@@ -198,13 +198,11 @@ export function useMockData() {
   const [hasNextPage, setHasNextPage] = useState(true);
 
   useEffect(() => {
-    // Simulate network delay
-    const timer = setTimeout(() => {
-      setPosts(mockPosts);
-      setLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
+    console.log('useMockData: Starting to load, mockPosts.length:', mockPosts.length);
+    
+    // Simple immediate data loading
+    setPosts(mockPosts);
+    setLoading(false);
   }, []);
 
   const loadMore = () => {
@@ -217,9 +215,12 @@ export function useMockData() {
           id: post.id + '_' + Date.now(),
           createdAt: new Date(Date.now() - Math.random() * 1000 * 60 * 60 * 24).toISOString()
         }));
-        setPosts(prev => [...prev, ...newPosts]);
+        setPosts(prev => {
+          const updatedPosts = [...prev, ...newPosts];
+          setHasNextPage(updatedPosts.length < 20); // Fix: Use updated posts length
+          return updatedPosts;
+        });
         setLoading(false);
-        setHasNextPage(posts.length < 20); // Stop after 20 posts
       }, 1000);
     }
   };

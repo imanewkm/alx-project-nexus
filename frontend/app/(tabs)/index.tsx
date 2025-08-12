@@ -17,6 +17,8 @@ import { useMockData } from '@/hooks/useMockData';
 export default function HomeScreen() {
   const { posts, loading, hasNextPage, loadMore, refetch } = useMockData();
 
+  console.log('HomeScreen render - posts.length:', posts.length, 'loading:', loading);
+
   const handleRefresh = () => {
     refetch();
   };

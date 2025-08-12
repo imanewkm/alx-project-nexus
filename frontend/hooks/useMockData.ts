@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Post } from '@/types/graphql';
+import { Post } from '../types/graphql';
 
 const mockPosts: Post[] = [
   {

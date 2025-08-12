@@ -9,10 +9,10 @@ import {
   StatusBar 
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Post } from '@/types/graphql';
-import PostCard from '@/components/PostCard';
-import PostSkeleton from '@/components/PostSkeleton';
-import { useMockData } from '@/hooks/useMockData';
+import { Post } from '../../types/graphql';
+import PostCard from '../../components/PostCard';
+import PostSkeleton from '../../components/PostSkeleton';
+import { useMockData } from '../../hooks/useMockData';
 
 export default function HomeScreen() {
   const { posts, loading, hasNextPage, loadMore, refetch } = useMockData();
